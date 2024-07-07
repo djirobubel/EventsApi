@@ -1,4 +1,5 @@
 ﻿using EventsApi.Interface;
+using EventsApi.Models;
 using MediatR;
 
 namespace EventsApi.Queries.GetLastMinuteEvents
@@ -13,19 +14,31 @@ namespace EventsApi.Queries.GetLastMinuteEvents
             _eventRepository = eventRepository;
         }
 
+        private int GetValueSum(ICollection<Event> events)
+        {
+            var sum = 0;
+
+            foreach (var e in events)
+            {
+                sum += e.Value;
+            }
+
+            return sum;
+        }
+
         public Task<GetLastMinuteEventsResult> Handle(GetLastMinuteEventsQuery request, 
             CancellationToken cancellationToken)
         {
             var events = _eventRepository.GetLastMinuteEvents();
-            var sum = _eventRepository.GetValueSum(events);
+            var sum = GetValueSum(events);
 
-            var time = DateTime.Now;
+            var time = DateTime.UtcNow;
 
             GetLastMinuteEventsResult result = new GetLastMinuteEventsResult
             {
-                currentTime = time,
-                minuteAgo = time.AddMinutes(-1),
-                sumOfValues = sum
+                CurrentTime = time,
+                MinuteAgo = time.AddMinutes(-1),
+                SumOfValues = sum
             };
 
             return Task.FromResult(result);

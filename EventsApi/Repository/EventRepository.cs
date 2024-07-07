@@ -21,27 +21,15 @@ namespace EventsApi.Repository
 
         public ICollection<Event> GetLastMinuteEvents()
         {
-            DateTime minuteAgo = DateTime.Now.AddMinutes(-1);
+            DateTime minuteAgo = DateTime.UtcNow.AddMinutes(-1);
 
-            return _context.Events.Where(t => t.Time >= minuteAgo).ToList();
+            return _context.Events.Where(t => t.TimeOfCreation >= minuteAgo).ToList();
         }
 
         public bool Save()
         {
             var saved = _context.SaveChanges();
             return saved > 0 ? true : false;
-        }
-
-        public int GetValueSum(ICollection<Event> events)
-        {
-            var sum = 0;
-
-            foreach (var e in events)
-            {
-                sum += e.Value;
-            }
-
-            return sum;
         }
     }
 }

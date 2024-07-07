@@ -2,8 +2,8 @@
 {
     public class GetLastMinuteEventsResult
     {
-        public DateTime currentTime { get; set; }
-        public DateTime minuteAgo { get; set; }
-        public int sumOfValues { get; set; }
+        public DateTime CurrentTime { get; set; }
+        public DateTime MinuteAgo { get; set; }
+        public int SumOfValues { get; set; }
     }
 }

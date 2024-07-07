@@ -20,7 +20,7 @@ namespace EventsApi.Commands.CreateEvent
             {
                 Name = request.Name,
                 Value = request.Value,
-                Time = DateTime.Now,
+                TimeOfCreation = DateTime.UtcNow,
             };
 
             _eventRepository.CreateEvent(createdEvent);

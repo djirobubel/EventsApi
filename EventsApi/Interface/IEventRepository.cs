@@ -6,7 +6,6 @@ namespace EventsApi.Interface
     {
         ICollection<Event> GetLastMinuteEvents();
         bool CreateEvent(Event eventModel);
-        int GetValueSum(ICollection<Event> events);
         bool Save();
     }
 }
