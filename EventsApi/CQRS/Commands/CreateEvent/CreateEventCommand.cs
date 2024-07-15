@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace EventsApi.Commands.CreateEvent
+namespace EventsApi.CQRS.Commands.CreateEvent
 {
     public class CreateEventCommand : IRequest<CreateEventResult>
     {

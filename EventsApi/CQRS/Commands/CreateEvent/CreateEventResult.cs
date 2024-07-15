@@ -1,4 +1,4 @@
-﻿namespace EventsApi.Commands.CreateEvent
+﻿namespace EventsApi.CQRS.Commands.CreateEvent
 {
     public class CreateEventResult
     {

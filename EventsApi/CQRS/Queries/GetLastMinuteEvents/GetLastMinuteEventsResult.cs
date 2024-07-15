@@ -1,4 +1,4 @@
-﻿namespace EventsApi.Queries.GetLastMinuteEvents
+﻿namespace EventsApi.CQRS.Queries.GetLastMinuteEvents
 {
     public class GetLastMinuteEventsResult
     {

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace EventsApi.Queries.GetLastMinuteEvents
+namespace EventsApi.CQRS.Queries.GetLastMinuteEvents
 {
     public class GetLastMinuteEventsQuery : IRequest<GetLastMinuteEventsResult>
     {

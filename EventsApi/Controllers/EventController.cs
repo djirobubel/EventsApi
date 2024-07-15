@@ -1,5 +1,5 @@
-﻿using EventsApi.Commands.CreateEvent;
-using EventsApi.Queries.GetLastMinuteEvents;
+﻿using EventsApi.CQRS.Commands.CreateEvent;
+using EventsApi.CQRS.Queries.GetLastMinuteEvents;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,16 +17,15 @@ namespace EventsApi.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(200)]
+        [ProducesResponseType(typeof(GetLastMinuteEventsResult),200)]
         public async Task<ActionResult> GetLastMinuteEvents()
         {
-            var query = new GetLastMinuteEventsQuery();
-            var result = await _mediator.Send(query);
+            var result = await _mediator.Send( new GetLastMinuteEventsQuery());
             return Ok(result);
         }
 
         [HttpPost]
-        [ProducesResponseType(204)]
+        [ProducesResponseType(typeof(CreateEventResult),204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         public async Task<IActionResult> CreateEvent([FromBody] CreateEventCommand command)

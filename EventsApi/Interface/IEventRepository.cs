@@ -6,6 +6,5 @@ namespace EventsApi.Interface
     {
         ICollection<Event> GetLastMinuteEvents();
         bool CreateEvent(Event eventModel);
-        bool Save();
     }
 }
